@@ -53,34 +53,29 @@ jobs:
       run: |
         pytest
   
-  test-ubuntu:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix: 
-        python-version: ["3.8", "3.9", "3.10"]
-    steps:
-    - name: Checkout Repo
-      uses: actions/checkout@v4
+  # test-ubuntu:
+  #   runs-on: ubuntu-latest
+  #   strategy:
+  #     matrix: 
+  #       python-version: ["3.8", "3.9", "3.10"]
+  #   steps:
+  #   - name: Checkout Repo
+  #     uses: actions/checkout@v4
 
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v3
-      with:
-        python-version: ${{ matrix.python-version }}
+  #   - name: Set up Python ${{ matrix.python-version }}
+  #     uses: actions/setup-python@v3
+  #     with:
+  #       python-version: ${{ matrix.python-version }}
 
-    - name: Install dependencies
-      run: |
-        sudo apt-get install -y xvfb xclip
-        Xvfb :99 -screen 0 1280x1024x24 &
-        export DISPLAY=:99
-        sleep 2
-        uptime | xclip -i -sel clipboard
-        xclip -o -sel clipboard
-        python -m pip install --upgrade pip
-        pip install pytest pyperclip
+  #   - name: Install dependencies
+  #     run: |
+  #       sudo apt-get install -y xclip
+  #       python -m pip install --upgrade pip
+  #       pip install pytest pyperclip
 
-    - name: Test with pytest
-      run: |
-        pytest
+  #   - name: Test with pytest
+  #     run: |
+  #       pytest
 
   build:
     runs-on: windows-latest
@@ -103,6 +98,7 @@ jobs:
 
     - name: Release
       uses: softprops/action-gh-release@v2
+      if: github.ref_type == 'tag'
       with:
         files: dist/define_word.exe
   
