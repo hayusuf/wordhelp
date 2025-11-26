@@ -16,7 +16,9 @@ def test_output(capsys):
     """Checking that correct definition is returned."""
     pyperclip.copy("cupel")
     output = "1. cupel\n\t\tnoun\n\t\t1) A small circular receptacle used in " \
-    "assaying gold or silver with lead.\n\n\t\tSynonyms: \n\t\tAntonyms: \n\n\t\tverb\n\t\t1) To refine by means of a cupel.\n\n\t\tSynonyms: \n\t\tAntonyms: \n\n\n"
+    "assaying gold or silver with lead.\n\n\t\tSynonyms: \n\t\tAntonyms: " \
+    "\n\n\t\tverb\n\t\t1) To refine by means of a cupel.\n\n\t\tSynonyms: " \
+    "\n\t\tAntonyms: \n\n\n"
     define_clipboard(True)
     captured = capsys.readouterr()
     assert output == captured.out
