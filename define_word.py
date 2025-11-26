@@ -23,7 +23,21 @@ def define_clipboard(test):
                     for definition in meaning['definitions']:
                         print(f"\t\t{def_count}) {definition['definition']}")
                         def_count += 1
-                    print()
+                    print("\n\t\tSynonyms: ", end="")
+                    first = False
+                    for synonym in meaning['synonyms']:
+                        if not first:
+                            first = True
+                        else: print(", ", end="")
+                        print(f"{synonym}", end="")
+                    print("\n\t\tAntonyms: ", end="")
+                    first = False
+                    for antonym in meaning['antonyms']:
+                        if not first:
+                            first = True
+                        else: print(", ", end="")
+                        print(f"{antonym}", end="")
+                    print("\n")
                 print()
         except urllib.error.URLError as e:
             print(f"Error fetching data: {e.reason}")
