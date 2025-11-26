@@ -1,0 +1,4 @@
+json
+re
+urllib.request
+pyperclip
