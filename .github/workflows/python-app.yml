@@ -77,8 +77,8 @@ jobs:
       run: pyinstaller --onefile --name define_word.exe define_word.py
 
     - name: Upload artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: define_word-exe
-          path: dist/define_word.exe
+      uses: actions/upload-artifact@v4
+      with:
+        name: define_word-exe
+        path: dist/define_word.exe
   
