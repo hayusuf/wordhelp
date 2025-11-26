@@ -9,7 +9,7 @@ def test_words():
     "melted for trial and refinement")
     words = pyperclip.paste()
     words = set(re.findall(r"\b\w+\b", words))
-    returned_words = define_clipboard()
+    returned_words = define_clipboard(True)
     assert words == returned_words
 
 def test_output(capsys):
@@ -17,6 +17,6 @@ def test_output(capsys):
     pyperclip.copy("cupel")
     output = "1. cupel\n\t\tnoun\n\t\t1) A small circular receptacle used in " \
     "assaying gold or silver with lead.\n\n\t\tverb\n\t\t1) To refine by means of a cupel.\n\n\n"
-    define_clipboard()
+    define_clipboard(True)
     captured = capsys.readouterr()
     assert output == captured.out
